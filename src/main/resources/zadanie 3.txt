@@ -1,0 +1,14 @@
+zadanie 1 - zrobione
+zadanie 2 - zrobi³em 2 projekty w konsoli, jeden zaimportowa³em. 
+	Ostatecznie IDE stwierdzi³o ¿e zaimportowana czêœæ projektu (app) nie nale¿y do projektu.
+	Stworzy³em kolejny projekt ju¿ w IDE u¿ywaj¹c nowszego pluginu (quickstart - ten sam co w poradniku)
+Zadanie 3. 
+	Aplikacja ma za³o¿on¹ funkcjonalnoœæ
+	Spe³nione s¹ warunki
+	Narazie nie zrobi³em tego co jest opisane jako dodatkowe bo nie wiedzia³em czy to jest zadanie w stylu szko³y "na szóstkê"
+
+Na dzisiaj koniec, jutro zacz¹æ od dodatkowych czy przejsæ do zadania 4 jeœli nie jest wymagane? 
+
+PS.
+W treœci zadania 3 jest b³¹d:
+"z u¿yciem klasy StringUtils z pakietu commons-lang ZACZYNA zawartoœæ pliku"
