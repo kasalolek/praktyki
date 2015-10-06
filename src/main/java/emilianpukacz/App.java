@@ -28,6 +28,9 @@ public class App
 
         }catch(FileNotFoundException fe){System.out.println("nie znaleziono pliku: "+ filename );}
         catch(Exception e){
+            // FIXME: Wypisanie wyjątku na konsolę jest kiepskim ruchem - w przypadku testu czy aplikacji
+            // bez konsoli spowoduje, że nie będziesz wiedzieć co się stało - wyjątek zostanie 'połknięty'
+            // To samo w sumie tyczy się wyjątku powyżej
             e.printStackTrace();
         }
         return zawartoscPliku;

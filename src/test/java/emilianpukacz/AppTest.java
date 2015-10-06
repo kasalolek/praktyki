@@ -7,6 +7,10 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
+
+// FIXME: Ten test kompletnie nic nie robi. Poszukaj czym są w ogóle unit testy i jak
+    // testuje się kod z użyciem biblioteki Mockito
+    // Nie przechodź dalej jeśli nie napiszesz poprawnych testów
 public class AppTest 
     extends TestCase
 {
@@ -35,4 +39,5 @@ public class AppTest
     {
         assertTrue( true );
     }
+
 }
