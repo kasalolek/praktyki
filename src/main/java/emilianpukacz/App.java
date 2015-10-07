@@ -20,19 +20,14 @@ public class App
         System.out.println("bez spacji: "+zawartoscPlikuBezSpacji);
     }
 
-    private String getFileFromResources(String filename){
+    public String getFileFromResources(String filename){
         ClassLoader classLoader = getClass().getClassLoader();
         String zawartoscPliku = "";
         try {
             zawartoscPliku = IOUtils.toString(classLoader.getResourceAsStream(filename));
 
-        }catch(FileNotFoundException fe){System.out.println("nie znaleziono pliku: "+ filename );}
-        catch(Exception e){
-            // FIXME: Wypisanie wyjątku na konsolę jest kiepskim ruchem - w przypadku testu czy aplikacji
-            // bez konsoli spowoduje, że nie będziesz wiedzieć co się stało - wyjątek zostanie 'połknięty'
-            // To samo w sumie tyczy się wyjątku powyżej
-            e.printStackTrace();
-        }
+        }catch(FileNotFoundException fe){return fe.getMessage();}
+        catch(Exception e){ return e.getMessage(); }
         return zawartoscPliku;
     }
 }
