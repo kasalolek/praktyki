@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class AppTest{
     App app;
@@ -18,17 +19,9 @@ String filename = "przyklad.txt";
 
 
     @Test
-    public void testMain() throws Exception {
-
-    }
-
-    @Test
     public void testGetFileFromResources() throws Exception {
+        assertNull("file not found", app.getFileFromResources("ooos"));
         assertEquals(app.getFileFromResources(filename), przyklad);
     }
-    @Test
-    public void testFileNotFound() throws Exception {
 
-        //assertEquals(app.getFileFromResources("ooos"), );
-    }
 }

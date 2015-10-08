@@ -26,8 +26,7 @@ public class App
         try {
             zawartoscPliku = IOUtils.toString(classLoader.getResourceAsStream(filename));
 
-        }catch(FileNotFoundException fe){return fe.getMessage();}
-        catch(Exception e){ return e.getMessage(); }
+        } catch(Exception e){ return e.getMessage(); }
         return zawartoscPliku;
     }
 }
