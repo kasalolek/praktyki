@@ -1,37 +1,39 @@
 package emilianpukacz;
 
-
+import org.mockito.Mockito;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.BufferedReader;
+import java.io.OutputStream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class AppTest{
-    App app;
-
-    String przyklad ="kilka przyskladowych slow a a  aaa v s ss ddd";
-    String filename = "przyklad.txt";
-
-    @Before
-    public void setUp(){
-        this.app = new App();
-    }
+public class AppTest extends Mockito{
+    String przyklad ="test 1 2 3";
+    String filename = "przykladTestowy.txt";
+    BufferedReader input;
+    OutputStream output;
 
     @Test
-    public void testGetFileFromResources() throws Exception {
-        assertNull("file not found", app.getFileFromResources("ooos"));
-        assertEquals(app.getFileFromResources(filename), przyklad);
+    public void testAppDefault() throws Exception {
+        App app = new App();
     }
+    @Test
+    public void testAppParameter() throws Exception {
+        BufferedReader input = mock(BufferedReader.class);
+        OutputStream  output = mock(OutputStream.class);
+        when(input.readLine());
+        App app = new App(input, output);
+
+    }
+
+
+
 
     /*
     Kilka komentarzy:
-     - po pierwsze, twoja App ma metodę main(), która woła po kolei wszystkie metody, zbiera dane z klawiatury
-      lub wypisuje zawartość na ekran. A nie jest testowana w ogóle
-     - metoda main jedyne co powinna robić to tworzyć instancję App i uruchamiać ją (np. metoda process, run itp.)
-     - metodę, którą testujesz, czyli getFileFromResources zrobiłeś publiczną by móc ją testować. To nie jest dobry
-      pomysł by zmieniać enkapsujację tylko z powodu testu
-     - nie testujesz tego co aplikacja robi, bo jedynie sprawdzasz czy pobiera się zawartość pliku
      - podpowiedzi: użyj Mockito by zasymulować Input i Output. Przekonfiguruj App by przyjmowała w konstruktorze
        input i output (np. BufferedReader i OutputStream) a w domyślnym konstruktorze używała domyślnych systemowych
        input i output

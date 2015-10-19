@@ -2,31 +2,34 @@ package emilianpukacz;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class App 
 {
-    public static void main( String[] args )
-    {
-        Scanner keyboardInput = new Scanner(System.in);
-        String filename = keyboardInput.nextLine();
+    BufferedReader input;
+    OutputStream output;
 
-        App obj = new App();
-        String zawartoscPliku = obj.getFileFromResources(filename);
-        System.out.println("oryginal: "+zawartoscPliku);
-        String zawartoscPlikuBezSpacji = StringUtils.deleteWhitespace(zawartoscPliku);
-        System.out.println("bez spacji: "+zawartoscPlikuBezSpacji);
+    public App( BufferedReader input , OutputStream output) {
+        this.input = input;
+        this.output = output;
+        run();
+    }
+    public App()  {
+       try{ this.input = new BufferedReader(new InputStreamReader(System.in));
+       }catch (Exception e){}
+        this.output = System.out;
+        run();
     }
 
-    public String getFileFromResources(String filename){
-        ClassLoader classLoader = getClass().getClassLoader();
-        String zawartoscPliku = "";
-        try {
-            zawartoscPliku = IOUtils.toString(classLoader.getResourceAsStream(filename));
 
-        } catch(Exception e){ return e.getMessage(); }
-        return zawartoscPliku;
+    private void run(){
+        ClassLoader classLoader = getClass().getClassLoader();
+        try {
+            String zawartoscPliku = IOUtils.toString(classLoader.getResourceAsStream(input.toString()));
+            output.write(StringUtils.deleteWhitespace(zawartoscPliku).getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
